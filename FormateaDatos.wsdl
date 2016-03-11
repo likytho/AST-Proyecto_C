@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:ns="http://ws.apache.org/axis2" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:ns1="http://org.apache.axis2/xsd" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" targetNamespace="http://ws.apache.org/axis2">
+    <wsdl:types>
+        <xs:schema attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://ws.apache.org/axis2">
+            <xs:element name="JsonToPoster">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="ID" type="xs:int"/>
+                        <xs:element minOccurs="0" name="json" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="JsonToPosterResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="return" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="JsonToComplete">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="ID" type="xs:int"/>
+                        <xs:element minOccurs="0" name="json" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="JsonToCompleteResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="return" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="JsonToBasic">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="ID" type="xs:int"/>
+                        <xs:element minOccurs="0" name="json" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="JsonToBasicResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="return" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+        </xs:schema>
+    </wsdl:types>
+    <wsdl:message name="JsonToPosterRequest">
+        <wsdl:part name="parameters" element="ns:JsonToPoster"/>
+    </wsdl:message>
+    <wsdl:message name="JsonToPosterResponse">
+        <wsdl:part name="parameters" element="ns:JsonToPosterResponse"/>
+    </wsdl:message>
+    <wsdl:message name="JsonToCompleteRequest">
+        <wsdl:part name="parameters" element="ns:JsonToComplete"/>
+    </wsdl:message>
+    <wsdl:message name="JsonToCompleteResponse">
+        <wsdl:part name="parameters" element="ns:JsonToCompleteResponse"/>
+    </wsdl:message>
+    <wsdl:message name="JsonToBasicRequest">
+        <wsdl:part name="parameters" element="ns:JsonToBasic"/>
+    </wsdl:message>
+    <wsdl:message name="JsonToBasicResponse">
+        <wsdl:part name="parameters" element="ns:JsonToBasicResponse"/>
+    </wsdl:message>
+    <wsdl:portType name="FormateaDatosPortType">
+        <wsdl:operation name="JsonToPoster">
+            <wsdl:input message="ns:JsonToPosterRequest" wsaw:Action="urn:JsonToPoster"/>
+            <wsdl:output message="ns:JsonToPosterResponse" wsaw:Action="urn:JsonToPosterResponse"/>
+        </wsdl:operation>
+        <wsdl:operation name="JsonToComplete">
+            <wsdl:input message="ns:JsonToCompleteRequest" wsaw:Action="urn:JsonToComplete"/>
+            <wsdl:output message="ns:JsonToCompleteResponse" wsaw:Action="urn:JsonToCompleteResponse"/>
+        </wsdl:operation>
+        <wsdl:operation name="JsonToBasic">
+            <wsdl:input message="ns:JsonToBasicRequest" wsaw:Action="urn:JsonToBasic"/>
+            <wsdl:output message="ns:JsonToBasicResponse" wsaw:Action="urn:JsonToBasicResponse"/>
+        </wsdl:operation>
+    </wsdl:portType>
+    <wsdl:binding name="FormateaDatosSoap11Binding" type="ns:FormateaDatosPortType">
+        <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document"/>
+        <wsdl:operation name="JsonToPoster">
+            <soap:operation soapAction="urn:JsonToPoster" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="JsonToComplete">
+            <soap:operation soapAction="urn:JsonToComplete" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="JsonToBasic">
+            <soap:operation soapAction="urn:JsonToBasic" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+    </wsdl:binding>
+    <wsdl:binding name="FormateaDatosSoap12Binding" type="ns:FormateaDatosPortType">
+        <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" style="document"/>
+        <wsdl:operation name="JsonToPoster">
+            <soap12:operation soapAction="urn:JsonToPoster" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="JsonToComplete">
+            <soap12:operation soapAction="urn:JsonToComplete" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="JsonToBasic">
+            <soap12:operation soapAction="urn:JsonToBasic" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+    </wsdl:binding>
+    <wsdl:binding name="FormateaDatosHttpBinding" type="ns:FormateaDatosPortType">
+        <http:binding verb="POST"/>
+        <wsdl:operation name="JsonToPoster">
+            <http:operation location="JsonToPoster"/>
+            <wsdl:input>
+                <mime:content type="application/xml" part="parameters"/>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:content type="application/xml" part="parameters"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="JsonToComplete">
+            <http:operation location="JsonToComplete"/>
+            <wsdl:input>
+                <mime:content type="application/xml" part="parameters"/>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:content type="application/xml" part="parameters"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="JsonToBasic">
+            <http:operation location="JsonToBasic"/>
+            <wsdl:input>
+                <mime:content type="application/xml" part="parameters"/>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:content type="application/xml" part="parameters"/>
+            </wsdl:output>
+        </wsdl:operation>
+    </wsdl:binding>
+    <wsdl:service name="FormateaDatos">
+        <wsdl:port name="FormateaDatosHttpSoap11Endpoint" binding="ns:FormateaDatosSoap11Binding">
+            <soap:address location="http://localhost:8080/axis2/services/FormateaDatos"/>
+        </wsdl:port>
+        <wsdl:port name="FormateaDatosHttpSoap12Endpoint" binding="ns:FormateaDatosSoap12Binding">
+            <soap12:address location="http://localhost:8080/axis2/services/FormateaDatos"/>
+        </wsdl:port>
+        <wsdl:port name="FormateaDatosHttpEndpoint" binding="ns:FormateaDatosHttpBinding">
+            <http:address location="http://localhost:8080/axis2/services/FormateaDatos"/>
+        </wsdl:port>
+    </wsdl:service>
+</wsdl:definitions>
