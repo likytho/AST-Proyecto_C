@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:ns="http://ws.apache.org/axis2" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:ax21="http://ws.apache.org/namespaces/axis2/map" xmlns:ns1="http://org.apache.axis2/xsd" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" targetNamespace="http://ws.apache.org/axis2">
+    <wsdl:types>
+        <xs:schema xmlns:ax22="http://ws.apache.org/namespaces/axis2/map" attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://ws.apache.org/axis2">
+            <xs:import namespace="http://ws.apache.org/namespaces/axis2/map"/>
+            <xs:element name="timeDiff">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="dateToDiff" nillable="true" type="xs:date"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="timeDiffResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="return" type="xs:double"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="numOcurrencias">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element maxOccurs="unbounded" minOccurs="0" name="peliculas" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="numOcurrenciasResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="return" nillable="true" type="ax22:map1"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="media">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element maxOccurs="unbounded" name="numeros" type="xs:double"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="mediaResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="return" type="xs:double"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+        </xs:schema>
+        <xs:schema attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://ws.apache.org/namespaces/axis2/map">
+            <xs:complexType name="entry1">
+                <xs:sequence>
+                    <xs:element minOccurs="0" name="key" nillable="true" type="xs:string"/>
+                    <xs:element name="value" type="xs:int"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="map1">
+                <xs:sequence>
+                    <xs:element maxOccurs="unbounded" minOccurs="0" name="entry" nillable="true" type="ax21:entry1"/>
+                </xs:sequence>
+            </xs:complexType>
+        </xs:schema>
+    </wsdl:types>
+    <wsdl:message name="timeDiffRequest">
+        <wsdl:part name="parameters" element="ns:timeDiff"/>
+    </wsdl:message>
+    <wsdl:message name="timeDiffResponse">
+        <wsdl:part name="parameters" element="ns:timeDiffResponse"/>
+    </wsdl:message>
+    <wsdl:message name="numOcurrenciasRequest">
+        <wsdl:part name="parameters" element="ns:numOcurrencias"/>
+    </wsdl:message>
+    <wsdl:message name="numOcurrenciasResponse">
+        <wsdl:part name="parameters" element="ns:numOcurrenciasResponse"/>
+    </wsdl:message>
+    <wsdl:message name="mediaRequest">
+        <wsdl:part name="parameters" element="ns:media"/>
+    </wsdl:message>
+    <wsdl:message name="mediaResponse">
+        <wsdl:part name="parameters" element="ns:mediaResponse"/>
+    </wsdl:message>
+    <wsdl:portType name="StadisticsPortType">
+        <wsdl:operation name="timeDiff">
+            <wsdl:input message="ns:timeDiffRequest" wsaw:Action="urn:timeDiff"/>
+            <wsdl:output message="ns:timeDiffResponse" wsaw:Action="urn:timeDiffResponse"/>
+        </wsdl:operation>
+        <wsdl:operation name="numOcurrencias">
+            <wsdl:input message="ns:numOcurrenciasRequest" wsaw:Action="urn:numOcurrencias"/>
+            <wsdl:output message="ns:numOcurrenciasResponse" wsaw:Action="urn:numOcurrenciasResponse"/>
+        </wsdl:operation>
+        <wsdl:operation name="media">
+            <wsdl:input message="ns:mediaRequest" wsaw:Action="urn:media"/>
+            <wsdl:output message="ns:mediaResponse" wsaw:Action="urn:mediaResponse"/>
+        </wsdl:operation>
+    </wsdl:portType>
+    <wsdl:binding name="StadisticsSoap11Binding" type="ns:StadisticsPortType">
+        <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document"/>
+        <wsdl:operation name="timeDiff">
+            <soap:operation soapAction="urn:timeDiff" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="numOcurrencias">
+            <soap:operation soapAction="urn:numOcurrencias" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="media">
+            <soap:operation soapAction="urn:media" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+    </wsdl:binding>
+    <wsdl:binding name="StadisticsSoap12Binding" type="ns:StadisticsPortType">
+        <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" style="document"/>
+        <wsdl:operation name="timeDiff">
+            <soap12:operation soapAction="urn:timeDiff" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="numOcurrencias">
+            <soap12:operation soapAction="urn:numOcurrencias" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="media">
+            <soap12:operation soapAction="urn:media" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+    </wsdl:binding>
+    <wsdl:binding name="StadisticsHttpBinding" type="ns:StadisticsPortType">
+        <http:binding verb="POST"/>
+        <wsdl:operation name="timeDiff">
+            <http:operation location="timeDiff"/>
+            <wsdl:input>
+                <mime:content type="application/xml" part="parameters"/>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:content type="application/xml" part="parameters"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="numOcurrencias">
+            <http:operation location="numOcurrencias"/>
+            <wsdl:input>
+                <mime:content type="application/xml" part="parameters"/>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:content type="application/xml" part="parameters"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="media">
+            <http:operation location="media"/>
+            <wsdl:input>
+                <mime:content type="application/xml" part="parameters"/>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:content type="application/xml" part="parameters"/>
+            </wsdl:output>
+        </wsdl:operation>
+    </wsdl:binding>
+    <wsdl:service name="Stadistics">
+        <wsdl:port name="StadisticsHttpSoap11Endpoint" binding="ns:StadisticsSoap11Binding">
+            <soap:address location="http://localhost:8080/axis2/services/Stadistics"/>
+        </wsdl:port>
+        <wsdl:port name="StadisticsHttpSoap12Endpoint" binding="ns:StadisticsSoap12Binding">
+            <soap12:address location="http://localhost:8080/axis2/services/Stadistics"/>
+        </wsdl:port>
+        <wsdl:port name="StadisticsHttpEndpoint" binding="ns:StadisticsHttpBinding">
+            <http:address location="http://localhost:8080/axis2/services/Stadistics"/>
+        </wsdl:port>
+    </wsdl:service>
+</wsdl:definitions>
