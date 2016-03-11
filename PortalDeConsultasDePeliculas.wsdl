@@ -1,0 +1,265 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:ns="http://ws.apache.org/axis2" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:ns1="http://org.apache.axis2/xsd" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" targetNamespace="http://ws.apache.org/axis2">
+    <wsdl:types>
+        <xs:schema attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://ws.apache.org/axis2">
+            <xs:element name="traducirUltimaConsulta">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="datosATraducir" nillable="true" type="xs:string"/>
+                        <xs:element name="ID" type="xs:int"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="getStats">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="opcion" type="xs:int"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="RegistrarUsuario">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="nomnbre" nillable="true" type="xs:string"/>
+                        <xs:element name="edad" type="xs:int"/>
+                        <xs:element minOccurs="0" name="genero" nillable="true" type="xs:string"/>
+                        <xs:element minOccurs="0" name="password" nillable="true" type="xs:string"/>
+                        <xs:element minOccurs="0" name="userName" nillable="true" type="xs:string"/>
+                        <xs:element minOccurs="0" name="mail" nillable="true" type="xs:string"/>
+                        <xs:element minOccurs="0" name="lenguaje" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="RegistrarUsuarioResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="return" type="xs:int"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="EnviarPorEmail">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="ID" type="xs:int"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="BuscarPeli">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="ID" type="xs:int"/>
+                        <xs:element name="titulo" type="xs:int"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="BuscarPeliResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="return" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="Acceder">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="ID" type="xs:int"/>
+                        <xs:element minOccurs="0" name="password" nillable="true" type="xs:string"/>
+                        <xs:element minOccurs="0" name="userName" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+        </xs:schema>
+    </wsdl:types>
+    <wsdl:message name="getStatsRequest">
+        <wsdl:part name="parameters" element="ns:getStats"/>
+    </wsdl:message>
+    <wsdl:message name="traducirUltimaConsultaRequest">
+        <wsdl:part name="parameters" element="ns:traducirUltimaConsulta"/>
+    </wsdl:message>
+    <wsdl:message name="RegistrarUsuarioRequest">
+        <wsdl:part name="parameters" element="ns:RegistrarUsuario"/>
+    </wsdl:message>
+    <wsdl:message name="RegistrarUsuarioResponse">
+        <wsdl:part name="parameters" element="ns:RegistrarUsuarioResponse"/>
+    </wsdl:message>
+    <wsdl:message name="AccederRequest">
+        <wsdl:part name="parameters" element="ns:Acceder"/>
+    </wsdl:message>
+    <wsdl:message name="EnviarPorEmailRequest">
+        <wsdl:part name="parameters" element="ns:EnviarPorEmail"/>
+    </wsdl:message>
+    <wsdl:message name="BuscarPeliRequest">
+        <wsdl:part name="parameters" element="ns:BuscarPeli"/>
+    </wsdl:message>
+    <wsdl:message name="BuscarPeliResponse">
+        <wsdl:part name="parameters" element="ns:BuscarPeliResponse"/>
+    </wsdl:message>
+    <wsdl:portType name="PortalDeConsultasDePeliculasPortType">
+        <wsdl:operation name="getStats">
+            <wsdl:input message="ns:getStatsRequest" wsaw:Action="urn:getStats"/>
+        </wsdl:operation>
+        <wsdl:operation name="traducirUltimaConsulta">
+            <wsdl:input message="ns:traducirUltimaConsultaRequest" wsaw:Action="urn:traducirUltimaConsulta"/>
+        </wsdl:operation>
+        <wsdl:operation name="RegistrarUsuario">
+            <wsdl:input message="ns:RegistrarUsuarioRequest" wsaw:Action="urn:RegistrarUsuario"/>
+            <wsdl:output message="ns:RegistrarUsuarioResponse" wsaw:Action="urn:RegistrarUsuarioResponse"/>
+        </wsdl:operation>
+        <wsdl:operation name="Acceder">
+            <wsdl:input message="ns:AccederRequest" wsaw:Action="urn:Acceder"/>
+        </wsdl:operation>
+        <wsdl:operation name="EnviarPorEmail">
+            <wsdl:input message="ns:EnviarPorEmailRequest" wsaw:Action="urn:EnviarPorEmail"/>
+        </wsdl:operation>
+        <wsdl:operation name="BuscarPeli">
+            <wsdl:input message="ns:BuscarPeliRequest" wsaw:Action="urn:BuscarPeli"/>
+            <wsdl:output message="ns:BuscarPeliResponse" wsaw:Action="urn:BuscarPeliResponse"/>
+        </wsdl:operation>
+    </wsdl:portType>
+    <wsdl:binding name="PortalDeConsultasDePeliculasSoap11Binding" type="ns:PortalDeConsultasDePeliculasPortType">
+        <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document"/>
+        <wsdl:operation name="getStats">
+            <soap:operation soapAction="urn:getStats" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+        </wsdl:operation>
+        <wsdl:operation name="traducirUltimaConsulta">
+            <soap:operation soapAction="urn:traducirUltimaConsulta" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+        </wsdl:operation>
+        <wsdl:operation name="RegistrarUsuario">
+            <soap:operation soapAction="urn:RegistrarUsuario" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="Acceder">
+            <soap:operation soapAction="urn:Acceder" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+        </wsdl:operation>
+        <wsdl:operation name="EnviarPorEmail">
+            <soap:operation soapAction="urn:EnviarPorEmail" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+        </wsdl:operation>
+        <wsdl:operation name="BuscarPeli">
+            <soap:operation soapAction="urn:BuscarPeli" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+    </wsdl:binding>
+    <wsdl:binding name="PortalDeConsultasDePeliculasSoap12Binding" type="ns:PortalDeConsultasDePeliculasPortType">
+        <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" style="document"/>
+        <wsdl:operation name="getStats">
+            <soap12:operation soapAction="urn:getStats" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+        </wsdl:operation>
+        <wsdl:operation name="traducirUltimaConsulta">
+            <soap12:operation soapAction="urn:traducirUltimaConsulta" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+        </wsdl:operation>
+        <wsdl:operation name="RegistrarUsuario">
+            <soap12:operation soapAction="urn:RegistrarUsuario" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="Acceder">
+            <soap12:operation soapAction="urn:Acceder" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+        </wsdl:operation>
+        <wsdl:operation name="EnviarPorEmail">
+            <soap12:operation soapAction="urn:EnviarPorEmail" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+        </wsdl:operation>
+        <wsdl:operation name="BuscarPeli">
+            <soap12:operation soapAction="urn:BuscarPeli" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+    </wsdl:binding>
+    <wsdl:binding name="PortalDeConsultasDePeliculasHttpBinding" type="ns:PortalDeConsultasDePeliculasPortType">
+        <http:binding verb="POST"/>
+        <wsdl:operation name="getStats">
+            <http:operation location="getStats"/>
+            <wsdl:input>
+                <mime:content type="application/xml" part="parameters"/>
+            </wsdl:input>
+        </wsdl:operation>
+        <wsdl:operation name="traducirUltimaConsulta">
+            <http:operation location="traducirUltimaConsulta"/>
+            <wsdl:input>
+                <mime:content type="application/xml" part="parameters"/>
+            </wsdl:input>
+        </wsdl:operation>
+        <wsdl:operation name="RegistrarUsuario">
+            <http:operation location="RegistrarUsuario"/>
+            <wsdl:input>
+                <mime:content type="application/xml" part="parameters"/>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:content type="application/xml" part="parameters"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="Acceder">
+            <http:operation location="Acceder"/>
+            <wsdl:input>
+                <mime:content type="application/xml" part="parameters"/>
+            </wsdl:input>
+        </wsdl:operation>
+        <wsdl:operation name="EnviarPorEmail">
+            <http:operation location="EnviarPorEmail"/>
+            <wsdl:input>
+                <mime:content type="application/xml" part="parameters"/>
+            </wsdl:input>
+        </wsdl:operation>
+        <wsdl:operation name="BuscarPeli">
+            <http:operation location="BuscarPeli"/>
+            <wsdl:input>
+                <mime:content type="application/xml" part="parameters"/>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:content type="application/xml" part="parameters"/>
+            </wsdl:output>
+        </wsdl:operation>
+    </wsdl:binding>
+    <wsdl:service name="PortalDeConsultasDePeliculas">
+        <wsdl:port name="PortalDeConsultasDePeliculasHttpSoap11Endpoint" binding="ns:PortalDeConsultasDePeliculasSoap11Binding">
+            <soap:address location="http://localhost:8080/axis2/services/PortalDeConsultasDePeliculas"/>
+        </wsdl:port>
+        <wsdl:port name="PortalDeConsultasDePeliculasHttpSoap12Endpoint" binding="ns:PortalDeConsultasDePeliculasSoap12Binding">
+            <soap12:address location="http://localhost:8080/axis2/services/PortalDeConsultasDePeliculas"/>
+        </wsdl:port>
+        <wsdl:port name="PortalDeConsultasDePeliculasHttpEndpoint" binding="ns:PortalDeConsultasDePeliculasHttpBinding">
+            <http:address location="http://localhost:8080/axis2/services/PortalDeConsultasDePeliculas"/>
+        </wsdl:port>
+    </wsdl:service>
+</wsdl:definitions>
