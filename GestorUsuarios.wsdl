@@ -1,0 +1,305 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:ns="http://ws.apache.org/axis2" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:ns1="http://org.apache.axis2/xsd" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" targetNamespace="http://ws.apache.org/axis2">
+    <wsdl:types>
+        <xs:schema attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://ws.apache.org/axis2">
+            <xs:element name="setConsulta">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="ID" type="xs:int"/>
+                        <xs:element minOccurs="0" name="json" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="nuevoUsuario">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="nomnbre" nillable="true" type="xs:string"/>
+                        <xs:element name="edad" type="xs:int"/>
+                        <xs:element minOccurs="0" name="genero" nillable="true" type="xs:string"/>
+                        <xs:element minOccurs="0" name="password" nillable="true" type="xs:string"/>
+                        <xs:element minOccurs="0" name="userName" nillable="true" type="xs:string"/>
+                        <xs:element minOccurs="0" name="mail" nillable="true" type="xs:string"/>
+                        <xs:element minOccurs="0" name="lenguaje" nillable="true" type="xs:string"/>
+                        <xs:element minOccurs="0" name="fechaingreso" nillable="true" type="xs:date"/>
+                        <xs:element minOccurs="0" name="ipRegistro" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="nuevoUsuarioResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="return" type="xs:int"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="getUsuario">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="ID" type="xs:int"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="getUsuarioResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="return" nillable="true" type="xs:anyType"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="getConsultas">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="ID" type="xs:int"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="getConsultasResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element maxOccurs="unbounded" minOccurs="0" name="return" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="comprobarCredenciales">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="user" nillable="true" type="xs:string"/>
+                        <xs:element minOccurs="0" name="passwd" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="comprobarCredencialesResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="return" type="xs:int"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="borrarUsuario">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="ID" type="xs:int"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+        </xs:schema>
+    </wsdl:types>
+    <wsdl:message name="comprobarCredencialesRequest">
+        <wsdl:part name="parameters" element="ns:comprobarCredenciales"/>
+    </wsdl:message>
+    <wsdl:message name="comprobarCredencialesResponse">
+        <wsdl:part name="parameters" element="ns:comprobarCredencialesResponse"/>
+    </wsdl:message>
+    <wsdl:message name="nuevoUsuarioRequest">
+        <wsdl:part name="parameters" element="ns:nuevoUsuario"/>
+    </wsdl:message>
+    <wsdl:message name="nuevoUsuarioResponse">
+        <wsdl:part name="parameters" element="ns:nuevoUsuarioResponse"/>
+    </wsdl:message>
+    <wsdl:message name="getUsuarioRequest">
+        <wsdl:part name="parameters" element="ns:getUsuario"/>
+    </wsdl:message>
+    <wsdl:message name="getUsuarioResponse">
+        <wsdl:part name="parameters" element="ns:getUsuarioResponse"/>
+    </wsdl:message>
+    <wsdl:message name="setConsultaRequest">
+        <wsdl:part name="parameters" element="ns:setConsulta"/>
+    </wsdl:message>
+    <wsdl:message name="borrarUsuarioRequest">
+        <wsdl:part name="parameters" element="ns:borrarUsuario"/>
+    </wsdl:message>
+    <wsdl:message name="getConsultasRequest">
+        <wsdl:part name="parameters" element="ns:getConsultas"/>
+    </wsdl:message>
+    <wsdl:message name="getConsultasResponse">
+        <wsdl:part name="parameters" element="ns:getConsultasResponse"/>
+    </wsdl:message>
+    <wsdl:portType name="GestorUsuariosPortType">
+        <wsdl:operation name="comprobarCredenciales">
+            <wsdl:input message="ns:comprobarCredencialesRequest" wsaw:Action="urn:comprobarCredenciales"/>
+            <wsdl:output message="ns:comprobarCredencialesResponse" wsaw:Action="urn:comprobarCredencialesResponse"/>
+        </wsdl:operation>
+        <wsdl:operation name="nuevoUsuario">
+            <wsdl:input message="ns:nuevoUsuarioRequest" wsaw:Action="urn:nuevoUsuario"/>
+            <wsdl:output message="ns:nuevoUsuarioResponse" wsaw:Action="urn:nuevoUsuarioResponse"/>
+        </wsdl:operation>
+        <wsdl:operation name="getUsuario">
+            <wsdl:input message="ns:getUsuarioRequest" wsaw:Action="urn:getUsuario"/>
+            <wsdl:output message="ns:getUsuarioResponse" wsaw:Action="urn:getUsuarioResponse"/>
+        </wsdl:operation>
+        <wsdl:operation name="setConsulta">
+            <wsdl:input message="ns:setConsultaRequest" wsaw:Action="urn:setConsulta"/>
+        </wsdl:operation>
+        <wsdl:operation name="borrarUsuario">
+            <wsdl:input message="ns:borrarUsuarioRequest" wsaw:Action="urn:borrarUsuario"/>
+        </wsdl:operation>
+        <wsdl:operation name="getConsultas">
+            <wsdl:input message="ns:getConsultasRequest" wsaw:Action="urn:getConsultas"/>
+            <wsdl:output message="ns:getConsultasResponse" wsaw:Action="urn:getConsultasResponse"/>
+        </wsdl:operation>
+    </wsdl:portType>
+    <wsdl:binding name="GestorUsuariosSoap11Binding" type="ns:GestorUsuariosPortType">
+        <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document"/>
+        <wsdl:operation name="comprobarCredenciales">
+            <soap:operation soapAction="urn:comprobarCredenciales" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="nuevoUsuario">
+            <soap:operation soapAction="urn:nuevoUsuario" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="getUsuario">
+            <soap:operation soapAction="urn:getUsuario" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="setConsulta">
+            <soap:operation soapAction="urn:setConsulta" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+        </wsdl:operation>
+        <wsdl:operation name="borrarUsuario">
+            <soap:operation soapAction="urn:borrarUsuario" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+        </wsdl:operation>
+        <wsdl:operation name="getConsultas">
+            <soap:operation soapAction="urn:getConsultas" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+    </wsdl:binding>
+    <wsdl:binding name="GestorUsuariosSoap12Binding" type="ns:GestorUsuariosPortType">
+        <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" style="document"/>
+        <wsdl:operation name="comprobarCredenciales">
+            <soap12:operation soapAction="urn:comprobarCredenciales" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="nuevoUsuario">
+            <soap12:operation soapAction="urn:nuevoUsuario" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="getUsuario">
+            <soap12:operation soapAction="urn:getUsuario" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="setConsulta">
+            <soap12:operation soapAction="urn:setConsulta" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+        </wsdl:operation>
+        <wsdl:operation name="borrarUsuario">
+            <soap12:operation soapAction="urn:borrarUsuario" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+        </wsdl:operation>
+        <wsdl:operation name="getConsultas">
+            <soap12:operation soapAction="urn:getConsultas" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+    </wsdl:binding>
+    <wsdl:binding name="GestorUsuariosHttpBinding" type="ns:GestorUsuariosPortType">
+        <http:binding verb="POST"/>
+        <wsdl:operation name="comprobarCredenciales">
+            <http:operation location="comprobarCredenciales"/>
+            <wsdl:input>
+                <mime:content type="application/xml" part="parameters"/>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:content type="application/xml" part="parameters"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="nuevoUsuario">
+            <http:operation location="nuevoUsuario"/>
+            <wsdl:input>
+                <mime:content type="application/xml" part="parameters"/>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:content type="application/xml" part="parameters"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="getUsuario">
+            <http:operation location="getUsuario"/>
+            <wsdl:input>
+                <mime:content type="application/xml" part="parameters"/>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:content type="application/xml" part="parameters"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="setConsulta">
+            <http:operation location="setConsulta"/>
+            <wsdl:input>
+                <mime:content type="application/xml" part="parameters"/>
+            </wsdl:input>
+        </wsdl:operation>
+        <wsdl:operation name="borrarUsuario">
+            <http:operation location="borrarUsuario"/>
+            <wsdl:input>
+                <mime:content type="application/xml" part="parameters"/>
+            </wsdl:input>
+        </wsdl:operation>
+        <wsdl:operation name="getConsultas">
+            <http:operation location="getConsultas"/>
+            <wsdl:input>
+                <mime:content type="application/xml" part="parameters"/>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:content type="application/xml" part="parameters"/>
+            </wsdl:output>
+        </wsdl:operation>
+    </wsdl:binding>
+    <wsdl:service name="GestorUsuarios">
+        <wsdl:port name="GestorUsuariosHttpSoap11Endpoint" binding="ns:GestorUsuariosSoap11Binding">
+            <soap:address location="http://localhost:8080/axis2/services/GestorUsuarios"/>
+        </wsdl:port>
+        <wsdl:port name="GestorUsuariosHttpSoap12Endpoint" binding="ns:GestorUsuariosSoap12Binding">
+            <soap12:address location="http://localhost:8080/axis2/services/GestorUsuarios"/>
+        </wsdl:port>
+        <wsdl:port name="GestorUsuariosHttpEndpoint" binding="ns:GestorUsuariosHttpBinding">
+            <http:address location="http://localhost:8080/axis2/services/GestorUsuarios"/>
+        </wsdl:port>
+    </wsdl:service>
+</wsdl:definitions>
